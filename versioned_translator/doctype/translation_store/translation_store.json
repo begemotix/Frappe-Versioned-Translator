@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-01-09 16:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "parent_doctype",
+  "parent_name",
+  "version_id",
+  "language",
+  "section_break_content",
+  "translated_content",
+  "column_break_status",
+  "edit_mode",
+  "translation_status",
+  "last_translated"
+ ],
+ "fields": [
+  {
+   "fieldname": "parent_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Parent DocType",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "parent_name",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Parent Name",
+   "options": "parent_doctype",
+   "reqd": 1
+  },
+  {
+   "fieldname": "version_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Version ID",
+   "reqd": 1,
+   "description": "Unique identifier for document version"
+  },
+  {
+   "fieldname": "language",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Language",
+   "reqd": 1,
+   "description": "Target language code (e.g., en, fr, es)"
+  },
+  {
+   "fieldname": "section_break_content",
+   "fieldtype": "Section Break",
+   "label": "Translation Content"
+  },
+  {
+   "fieldname": "translated_content",
+   "fieldtype": "JSON",
+   "label": "Translated Content",
+   "reqd": 1,
+   "description": "JSON object containing translated field values"
+  },
+  {
+   "fieldname": "column_break_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "edit_mode",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Edit Mode",
+   "default": 0,
+   "description": "If checked, manual edits override auto-translations"
+  },
+  {
+   "fieldname": "translation_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Translation Status",
+   "options": "Pending\nIn Progress\nCompleted\nFailed",
+   "default": "Pending"
+  },
+  {
+   "fieldname": "last_translated",
+   "fieldtype": "Datetime",
+   "label": "Last Translated",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-01-09 16:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Versioned Translator",
+ "name": "Translation Store",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

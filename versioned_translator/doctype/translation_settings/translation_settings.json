@@ -1,0 +1,91 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2025-01-09 16:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "issingle": 1,
+ "field_order": [
+  "section_break_api",
+  "api_key",
+  "column_break_settings",
+  "enable_auto_translation",
+  "section_break_rules",
+  "default_source_language",
+  "default_target_languages",
+  "auto_translate_on_update"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_api",
+   "fieldtype": "Section Break",
+   "label": "API Configuration"
+  },
+  {
+   "fieldname": "api_key",
+   "fieldtype": "Password",
+   "label": "DeepL API Key",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_settings",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "enable_auto_translation",
+   "fieldtype": "Check",
+   "label": "Enable Auto Translation",
+   "default": 0
+  },
+  {
+   "fieldname": "section_break_rules",
+   "fieldtype": "Section Break",
+   "label": "Translation Rules"
+  },
+  {
+   "fieldname": "default_source_language",
+   "fieldtype": "Data",
+   "label": "Default Source Language",
+   "default": "de",
+   "reqd": 1
+  },
+  {
+   "fieldname": "default_target_languages",
+   "fieldtype": "Small Text",
+   "label": "Default Target Languages (comma-separated)",
+   "description": "e.g., en,fr,es"
+  },
+  {
+   "fieldname": "auto_translate_on_update",
+   "fieldtype": "Check",
+   "label": "Auto Translate on Document Update",
+   "default": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-01-09 16:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Versioned Translator",
+ "name": "Translation Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

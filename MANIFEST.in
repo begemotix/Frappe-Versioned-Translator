@@ -1,0 +1,11 @@
+include README.md
+include LICENSE
+include requirements.txt
+recursive-include versioned_translator *.json
+recursive-include versioned_translator *.py
+recursive-include versioned_translator *.html
+recursive-include versioned_translator *.css
+recursive-include versioned_translator *.js
+recursive-include versioned_translator *.md
+recursive-exclude * __pycache__
+recursive-exclude * *.pyc

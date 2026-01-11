@@ -17,6 +17,14 @@ def on_doc_load(doc, method):
 	Injects original_language field if DocType is in Translation Map.
 	"""
 	try:
+		# Skip during migration or if flags.in_migrate is set
+		if getattr(frappe.flags, "in_migrate", False) or getattr(frappe.flags, "in_install", False):
+			return
+
+		# Skip if Translation Map DocType doesn't exist yet (during installation)
+		if not frappe.db.exists("DocType", "Translation Map"):
+			return
+
 		# Prüfe, ob DocType in Translation Map aktiv ist
 		translation_map_name = frappe.db.get_value(
 			"Translation Map",
@@ -31,7 +39,9 @@ def on_doc_load(doc, method):
 		# Kein Translation Map für diesen DocType - kein Problem
 		pass
 	except Exception as e:
-		frappe.log_error(f"Error in on_doc_load for {doc.doctype}: {str(e)}", "Versioned Translator")
+		# Don't log errors during migration to avoid recursion
+		if not (getattr(frappe.flags, "in_migrate", False) or getattr(frappe.flags, "in_install", False)):
+			frappe.log_error(f"Error in on_doc_load for {doc.doctype}: {str(e)}", "Versioned Translator")
 
 
 def on_doc_update(doc, method):
@@ -40,6 +50,14 @@ def on_doc_update(doc, method):
 	Checks if relevant fields changed and triggers async translation.
 	"""
 	try:
+		# Skip during migration or if flags.in_migrate is set
+		if getattr(frappe.flags, "in_migrate", False) or getattr(frappe.flags, "in_install", False):
+			return
+
+		# Skip if Translation Settings DocType doesn't exist yet (during installation)
+		if not frappe.db.exists("DocType", "Translation Settings"):
+			return
+
 		# Prüfe, ob Translation Settings aktiviert sind
 		settings = get_translation_settings()
 		if not settings or not settings.get("enable_auto_translation") or not settings.get("auto_translate_on_update"):
@@ -82,7 +100,9 @@ def on_doc_update(doc, method):
 		# Kein Translation Map - kein Problem
 		pass
 	except Exception as e:
-		frappe.log_error(f"Error in on_doc_update for {doc.doctype} {doc.name}: {str(e)}", "Versioned Translator")
+		# Don't log errors during migration to avoid recursion
+		if not (getattr(frappe.flags, "in_migrate", False) or getattr(frappe.flags, "in_install", False)):
+			frappe.log_error(f"Error in on_doc_update for {doc.doctype} {doc.name}: {str(e)}", "Versioned Translator")
 
 
 def translate_to_all_languages(doctype, docname):

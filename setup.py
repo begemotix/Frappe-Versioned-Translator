@@ -13,6 +13,6 @@ setup(
 	zip_safe=False,
 	include_package_data=True,
 	install_requires=[
-		"frappe>=14.0.0",
+		"requests>=2.28.0",
 	],
 )
